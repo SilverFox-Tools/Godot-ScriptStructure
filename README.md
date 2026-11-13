@@ -1,5 +1,4 @@
-# **Godot 脚本结构**  
-**Godot Script Structure**
+# **Godot 脚本结构**<br>**Godot Script Structure**
 
 Godot 编辑器插件，用于查看当前 **GDScript** 的脚本结构。  
 A Godot editor plugin for exploring the structure of the active **GDScript**.
@@ -10,26 +9,24 @@ A Godot editor plugin for exploring the structure of the active **GDScript**.
 > **分支说明 :** **main** 分支以 **Godot 官方版 4.6.1** 为主要开发与测试基准。  
 > **Branch Description :** **main** branch is primarily developed and tested based on **Godot 官方版 4.6.1**
 
-## **功能**  
-**Features**
+## **功能**<br>**Features**
 
 - 以树状结构显示**类、常量、变量、信号、函数和枚举**。  
-  Displays **classes, constants, variables, signals, functions, and enums** in a tree.
+	Displays **classes, constants, variables, signals, functions, and enums** in a tree.
 
 - 支持**嵌套类**，并区分静态成员和普通成员。  
-  Supports **nested classes** and distinguishes static members from regular members.
+	Supports **nested classes** and distinguishes static members from regular members.
 
 - 使用**搜索框**按名称筛选符号，并通过**类型按钮**显示或隐藏不同类别。  
-  Filter symbols by name with the **search field** and show or hide categories with the **type buttons**.
+	Filter symbols by name with the **search field** and show or hide categories with the **type buttons**.
 
 - 选择树中的**符号**可跳转到脚本对应的代码行。  
-  Select a **symbol** in the tree to jump to its line in the script.
+	Select a **symbol** in the tree to jump to its line in the script.
 
 - 脚本内容或当前编辑脚本变化时，结构会**自动刷新**。  
-  The structure **refreshes automatically** when the source or active script changes.
+	The structure **refreshes automatically** when the source or active script changes.
 
-## **安装**  
-**Installation**
+## **安装**<br>**Installation**
 
 **步骤一 :** 将插件文件夹复制到 Godot 项目的 `res://addons/` 目录。  
 **Step 1 :** Copy the plugin folder into the Godot project's `res://addons/` directory.
@@ -40,8 +37,7 @@ A Godot editor plugin for exploring the structure of the active **GDScript**.
 **步骤三 :** 启用 `Script Structure` 插件。  
 **Step 3 :** Enable the `Script Structure` plugin.
 
-## **使用**  
-**Usage**
+## **使用**<br>**Usage**
 
 打开 **GDScript** 后，在脚本编辑器的结构面板中浏览符号。  
 Open a **GDScript** and browse its symbols in the structure panel of the script editor.

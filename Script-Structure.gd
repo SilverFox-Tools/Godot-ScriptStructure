@@ -59,39 +59,23 @@ func _exit_tree() -> void:
 		_Filter_Edit.text = _Original_Filter_Text
 		if _Filter_Edit.text_changed.is_connected(_On_Search_Changed):
 			_Filter_Edit.text_changed.disconnect(_On_Search_Changed)
-	_Filter_Edit = null
 	if is_instance_valid(_Options_Button):
 		_Options_Button.visible = _Original_Options_Visible
-	_Options_Button = null
 	if is_instance_valid(_Type_Filter_Row):
 		var Filter_Parent := _Type_Filter_Row.get_parent()
 		if Filter_Parent != null:
 			Filter_Parent.remove_child(_Type_Filter_Row)
 		_Type_Filter_Row.queue_free()
-	_Type_Filter_Row = null
 	if is_instance_valid(_Tree):
 		var Tree_Parent := _Tree.get_parent()
 		if Tree_Parent != null:
 			Tree_Parent.remove_child(_Tree)
 		_Tree.queue_free()
-	_Tree = null
 	if is_instance_valid(_Methods_List) and is_instance_valid(_Methods_List_Parent):
 		_Methods_List_Parent.add_child(_Methods_List)
 		_Methods_List_Parent.move_child(
 			_Methods_List, mini(_Methods_List_Index, _Methods_List_Parent.get_child_count() - 1)
 		)
-	_Filter_Bar = null
-	_Methods_List = null
-	_Methods_List_Parent = null
-	_Methods_List_Index = -1
-	_Current_Script = null
-	_Last_Source = ""
-	_Original_Placeholder = ""
-	_Original_Filter_Text = ""
-	_Original_Options_Visible = false
-	_Replacement_Installed = false
-	_Filter_Buttons.clear()
-	_Symbol_Icons.clear()
 
 
 func _process(_Delta: float) -> void:
@@ -107,7 +91,7 @@ func _process(_Delta: float) -> void:
 
 
 func _Install_Methods_List_Replacement() -> void:
-	if not is_inside_tree() or _Replacement_Installed:
+	if _Replacement_Installed:
 		return
 
 	var Script_Editor := EditorInterface.get_script_editor()
@@ -158,7 +142,7 @@ func _Install_Methods_List_Replacement() -> void:
 	_Methods_List_Parent = Parent
 	_Methods_List_Index = Methods_List_Index
 	_Tree = Tree.new()
-	_Tree.Name = "Script-Structure"
+	_Tree.name = "Script-Structure"
 	_Tree.columns = 1
 	_Tree.hide_root = false
 	_Tree.size_flags_horizontal = _Methods_List.size_flags_horizontal
@@ -174,12 +158,12 @@ func _Install_Methods_List_Replacement() -> void:
 		_Original_Filter_Text = _Filter_Edit.text
 		_Filter_Edit.text_changed.connect(_On_Search_Changed)
 		_Type_Filter_Row = HBoxContainer.new()
-		_Type_Filter_Row.Name = "Script-Symbol-Type-Filters"
+		_Type_Filter_Row.name = "Script-Symbol-Type-Filters"
 		_Type_Filter_Row.add_theme_constant_override("separation", 2)
 		_Filter_Bar.get_parent().add_child(_Type_Filter_Row)
 		for Kind in _Symbol_Types:
 			var Filter_Button := TextureButton.new()
-			Filter_Button.Name = "%s-Filter" % Kind
+			Filter_Button.name = "%s-Filter" % Kind
 			Filter_Button.tooltip_text = "%s：显示" % Kind
 			Filter_Button.custom_minimum_size = Vector2(18, 18)
 			Filter_Button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
